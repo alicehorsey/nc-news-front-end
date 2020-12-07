@@ -10,7 +10,8 @@ function App() {
       <Header />
       <Nav />
       <Router>
-        <ArticlesList path="/topics/:topic_name" />
+        <ArticlesList path="/" />
+        <ArticlesList path="/topics/:topic_name" />        <ArticlesList path="/topics/:topic_name" />
       </Router>
     </div>
   );
