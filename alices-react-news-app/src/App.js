@@ -1,6 +1,7 @@
 import './App.css';
 import Header from './components/Header'
 import Nav from './components/Nav'
+import ArticlesList from './components/ArticlesList'
 import { Router } from "@reach/router"
 
 function App() {
