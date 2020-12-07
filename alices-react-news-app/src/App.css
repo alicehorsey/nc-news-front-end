@@ -1,0 +1,19 @@
+h1 {
+    text-align: center;
+    background-color: rgb(133, 133, 233);
+    margin: 0;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.nav-bar {
+    text-align: center;
+    background-color: rgb(199, 199, 245);
+    padding: 10px;
+}
+
+.nav-links {
+    padding-left: 40px;
+    padding-right: 40px;
+    text-transform: uppercase;
+}
