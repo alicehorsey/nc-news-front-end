@@ -2,19 +2,21 @@ import React, { Component } from 'react';
 import { getArticles } from '../api'
 import ArticleCard from './ArticleCard'
 import FilterBar from './FilterBar'
+import Loading from './Loading'
 
 
 class ArticlesList extends Component {
     state = {
         articles: [],
         order: undefined, //<--- order: asc / desc
-        sort_by: undefined //<--- column: created_at / author
+        sort_by: undefined, //<--- column: created_at / author
+        isLoading: true
     }
 
     componentDidMount = () => {
         const { topic_name } = this.props
         getArticles(topic_name).then((articles) => {
-            this.setState({ articles })
+            this.setState({ articles, isLoading: false })
         })
     }
 
@@ -25,8 +27,9 @@ class ArticlesList extends Component {
         const newOrder = prevState.order !== order;
         const newSortBy = prevState.sort_by !== sort_by;
         if (newTopic || newOrder || newSortBy) {
+            // this.setState({ isLoading: true })
             getArticles(topic_name, order, sort_by).then((articles) => {
-                this.setState({ articles })
+                this.setState({ articles, isLoading: false })
             })
         }
     }
@@ -37,8 +40,10 @@ class ArticlesList extends Component {
     }
 
     render() {
-        const { articles } = this.state
+        const { articles, isLoading } = this.state
         const { topic_name } = this.props
+
+        if (isLoading) return <Loading />
         return (
             <main>
                 <h2>{topic_name ? topic_name : "All your favourite articles in one place!"}</h2>
