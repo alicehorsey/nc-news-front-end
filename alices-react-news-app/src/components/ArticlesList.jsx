@@ -6,7 +6,9 @@ import FilterBar from './FilterBar'
 
 class ArticlesList extends Component {
     state = {
-        articles: []
+        articles: [],
+        order: undefined, //<--- order: asc / desc
+        sort_by: undefined //<--- column: created_at / author
     }
 
     componentDidMount = () => {
@@ -17,12 +19,21 @@ class ArticlesList extends Component {
     }
 
     componentDidUpdate = (prevProps, prevState) => {
-        const newTopic = prevProps.topic_name !== this.props.topic_name;
-        if (newTopic) {
-            getArticles(this.props.topic_name).then((articles) => {
+        const { order, sort_by } = this.state
+        const { topic_name } = this.props
+        const newTopic = prevProps.topic_name !== topic_name;
+        const newOrder = prevState.order !== order;
+        const newSortBy = prevState.sort_by !== sort_by;
+        if (newTopic || newOrder || newSortBy) {
+            getArticles(topic_name, order, sort_by).then((articles) => {
                 this.setState({ articles })
             })
         }
+    }
+
+    updateFilter = (newOrder, newSort_by) => {
+        console.log(newOrder, newSort_by, "<---articles list")
+        this.setState({ order: newOrder, sort_by: newSort_by })
     }
 
     render() {
@@ -31,7 +42,7 @@ class ArticlesList extends Component {
         return (
             <main>
                 <h2>{topic_name ? topic_name : "All your favourite articles in one place!"}</h2>
-                <FilterBar topicOption={topic_name} />
+                <FilterBar changeFilter={this.updateFilter} />
                 <ul className="articles-list">
                     {articles.map((article) => {
                         return (

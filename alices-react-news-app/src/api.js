@@ -10,13 +10,22 @@ export const getAllTopics = () => {
     })
 }
 
-export const getArticles = (topic_name) => {
+export const getArticles = (topic_name, order, sort_by) => {
     return alicesNewsAPI.get('/articles', {
         params: {
             topic: topic_name,
+            order: order,
+            sort_by: sort_by,
             limit: 100
         }
     }).then(({ data }) => {
         return data.articles;
+    })
+}
+
+export const getSingleArticle = (article_id) => {
+    return alicesNewsAPI.get(`/articles/${article_id}`, {
+    }).then(({ data }) => {
+        return data.article;
     })
 }
