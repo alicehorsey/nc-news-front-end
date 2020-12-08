@@ -13,10 +13,10 @@ export const getAllTopics = () => {
 export const getArticles = (topic_name) => {
     return alicesNewsAPI.get('/articles', {
         params: {
-            topic: topic_name
+            topic: topic_name,
+            limit: 100
         }
     }).then(({ data }) => {
-        console.log(data)
         return data.articles;
     })
 }

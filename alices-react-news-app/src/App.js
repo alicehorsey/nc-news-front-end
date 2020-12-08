@@ -11,7 +11,7 @@ function App() {
       <Nav />
       <Router>
         <ArticlesList path="/" />
-        <ArticlesList path="/topics/:topic_name" />        <ArticlesList path="/topics/:topic_name" />
+        <ArticlesList path="/topics/:topic_name" />
       </Router>
     </div>
   );

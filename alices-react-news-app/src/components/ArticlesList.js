@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { getArticles } from '../api'
+import ArticleCard from './ArticleCard'
+import FilterBar from './FilterBar'
+
 
 class ArticlesList extends Component {
     state = {
@@ -23,15 +26,23 @@ class ArticlesList extends Component {
     }
 
     render() {
-        console.log(this.props)
         const { articles } = this.state
-
+        const { topic_name } = this.props
         return (
-            <div className="articles-list">
-                {articles.map((article) => {
-                    return <li>{article.title}</li>
-                })}
-            </div>
+            <main>
+                <h2>{topic_name ? topic_name : "All your favourite articles in one place!"}</h2>
+                <FilterBar topicOption={topic_name} />
+                <ul className="articles-list">
+                    {articles.map((article) => {
+                        return (
+                            <ArticleCard
+                                key={article.article_id}
+                                article={article}
+                            />
+                        );
+                    })}
+                </ul>
+            </main>
         );
     }
 }
