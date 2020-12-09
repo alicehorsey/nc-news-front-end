@@ -25,7 +25,7 @@ h3 {
     text-align: center;
     padding: 5px;
     text-decoration: none;
-    text-transform: capitalize;
+    text-transform: uppercase;
     margin: 0px;
 }
 .App {
@@ -35,7 +35,7 @@ h3 {
 }
 .img-description{
     font-size: 10pt;
-    padding: 10px;
+    padding: 5px;
 }
 .nav-bar {
     text-align: center;
@@ -91,4 +91,21 @@ h3 {
     text-align: center;
     background-color:  rgb(199, 199, 245);
     padding: 5px;
+}
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.comment-card {
+    list-style-type: none;
+    margin-bottom: 20px;
+    padding: 10px;
+    /* border: 5px solid  rgb(199, 199, 245); */
+    background-color:rgb(227, 227, 247);
+    opacity: 100%;
+    min-width: 100%;
 }

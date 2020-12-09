@@ -29,3 +29,19 @@ export const getSingleArticle = (article_id) => {
         return data.article;
     })
 }
+
+export const updateVoteForArticle = (article_id, vote) => {
+    return alicesNewsAPI.patch(`./articles/${article_id}`, {
+        "inc_votes": vote
+    }).then(({ data }) => {
+        console.log(data.updatedArticle)
+    })
+}
+
+export const getComments = (article_id) => {
+    return alicesNewsAPI.get(`/articles/${article_id}/comments`).then(({ data }) => {
+        console.log(data.commentsByArticleId)
+        return data.commentsByArticleId;
+    })
+}
+
