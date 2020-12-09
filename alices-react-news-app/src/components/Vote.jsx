@@ -4,37 +4,22 @@ import { updateVoteForArticle } from "../api"
 class Vote extends Component {
 
     state = {
-        //vote button limit at 10 so when voteCount gets to 10 disable button
-        voteUp: false,
-        voteDown: false,
-        voteRequests: 0
+        vote: 0,
     }
 
-    handleVoteClick = (article_id, event) => {
-        console.log(article_id)
-        console.log(event.target.id)
-
-        if (event.target.id === "up-vote") {
-            this.setState({ voteUp: true, voteRequests: 1 })
-            updateVoteForArticle(article_id, 1).then(
-                this.setState({ voteUp: false })
-            )
-        }
-
+    handleVoteClick = (id, event) => {
+        this.setState({ vote: (this.state.vote + +event.target.value) })
+        updateVoteForArticle(id, +event.target.value)
     }
-
-
-
-
 
     render() {
-        console.log(this.props.article_id)
-        const { article_id } = this.props
+        const { id, vote } = this.props
         return (
             <div>
-                <button id="up-vote" onClick={(event) => { this.handleVoteClick(article_id, event) }}>Vote</button>
-                <button id="down-vote" onClick={(event) => { this.handleVoteClick(article_id, event) }}>Undo Vote</button>
-            </div>
+                <p>Votes: {vote + this.state.vote}</p>
+                <button value={1} onClick={(event) => { this.handleVoteClick(id, event) }} disabled={this.state.vote === 1}>Vote</button>
+                <button value={-1} onClick={(event) => { this.handleVoteClick(id, event) }} disabled={this.state.vote === 0}>Undo Vote</button>
+            </div >
         );
     }
 }
