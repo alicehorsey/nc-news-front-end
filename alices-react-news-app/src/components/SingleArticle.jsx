@@ -4,6 +4,7 @@ import { Link } from "@reach/router"
 import Loading from "./Loading"
 import CommentsList from "./CommentsList"
 import Vote from "./Vote"
+import AddCommentForm from "./AddCommentForm"
 
 class SingleArticle extends Component {
 
@@ -32,9 +33,10 @@ class SingleArticle extends Component {
                 <h3>{author}</h3>
                 <p>{body}</p>
                 <p>Published: {created_at}</p>
-
-                <Vote id={article_id} vote={votes} />
+                <Vote name="article" id={article_id} vote={votes} />
                 <p>Comments: {comment_count}</p>
+                <p>Add Comment: </p>
+                <AddCommentForm />
                 <p>Comments:</p>
                 <CommentsList article_id={article_id} />
                 <p></p>

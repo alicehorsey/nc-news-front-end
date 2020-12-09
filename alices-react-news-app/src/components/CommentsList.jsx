@@ -13,16 +13,11 @@ class CommentsList extends Component {
     componentDidMount = () => {
         const { article_id } = this.props
         getComments(article_id).then((comments) => {
-            console.log(comments, "in comments list")
             this.setState({ comments, isLoading: false })
         })
     }
 
-
-
     render() {
-        // console.log(this.props.article_id)
-
         const { comments, isLoading } = this.state
 
         if (isLoading) return <CommentsLoading />
