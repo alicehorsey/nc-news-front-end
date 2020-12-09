@@ -32,7 +32,7 @@ class FilterBar extends Component {
         const { authorButton, dateButton } = this.state
         return (
             <main className="filter-articles">
-                <h3>Sort By:</h3>
+                {/* <h3>Sort By:</h3> */}
                 <label>Author:
                     <button className="author-button" id="authorOrderButton" onClick={this.handleAuthorClick}>{authorButton}</button>
                 </label>
