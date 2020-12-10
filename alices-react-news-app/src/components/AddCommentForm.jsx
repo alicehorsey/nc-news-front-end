@@ -2,39 +2,33 @@ import React, { Component } from 'react';
 
 class AddCommentForm extends Component {
     state = {
-        username: "",
+        username: "jessjelly",// hardcoded username until login functionality is implemented
         body: ""
     }
 
     handleChange = (event) => {
-        const { username, body } = this.state
-        if (event.target.id === username) {
-            this.setState({ username: event.target.value })
-        } else if (event.target.id === body) {
-            this.setState({ body: event.target.value })
-        }
-
-
+        this.setState({ body: event.target.value })
     }
 
+    handleSubmit = (event) => {
+        const { body, username } = this.state
+        const { addComment } = this.props
+        event.preventDefault();
+        addComment({ body, username })
+        this.setState({ body: "" })
+    }
 
     render() {
-        const { username, body } = this.state
+        const { body } = this.state
 
         return (
-            <form>
-                <input type="text" onChange={this.handleChange} value={username} id={username}></input>
-                <input type="text" onChange={this.handleChange} value={body} id={body}></input>
+            <form onSubmit={this.handleSubmit}>
+                <textarea type="text" onChange={this.handleChange} value={body}></textarea>
                 <button>Post Comment</button>
-            </form>
+            </form >
 
         );
     }
 }
 
 export default AddCommentForm;
-
-// {
-// "username": "username",
-// "body": "text"
-// }
