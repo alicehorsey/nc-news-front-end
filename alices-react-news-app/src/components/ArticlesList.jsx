@@ -10,13 +10,19 @@ class ArticlesList extends Component {
         articles: [],
         order: undefined, //<--- order: asc / desc
         sort_by: undefined, //<--- column: created_at / author
-        isLoading: true
+        isLoading: true,
+        hasError: false,
+        errorMessage: ""
     }
 
     componentDidMount = () => {
         const { topic_name } = this.props
         getArticles(topic_name).then((articles) => {
             this.setState({ articles, isLoading: false })
+        }).catch((err) => {
+            const { response: { status } } = err
+            this.setState({ isLoading: false, hasError: true, errorMessage: `Oh no! Status ${status}, ${err.response.data.msg}` }
+            )
         })
     }
 
@@ -31,6 +37,11 @@ class ArticlesList extends Component {
             getArticles(topic_name, order, sort_by).then((articles) => {
                 this.setState({ articles, isLoading: false })
             })
+                .catch((err) => {
+                    const { response: { status, statusText } } = err
+                    this.setState({ isLoading: false, hasError: true, errorMessage: `Oh no! Status ${status}, ${statusText}` }
+                    )
+                })
         }
     }
 
@@ -40,26 +51,32 @@ class ArticlesList extends Component {
     }
 
     render() {
-        const { articles, isLoading } = this.state
+        const { articles, isLoading, hasError, errorMessage } = this.state
         const { topic_name } = this.props
 
-        if (isLoading) return <Loading />
-        return (
-            <main>
-                <h2>{topic_name ? topic_name : "All your favourite articles in one place!"}</h2>
-                <FilterBar changeFilter={this.updateFilter} />
-                <ul className="articles-list">
-                    {articles.map((article) => {
-                        return (
-                            <ArticleCard
-                                key={article.article_id}
-                                article={article}
-                            />
-                        );
-                    })}
-                </ul>
-            </main>
-        );
+        if (isLoading) {
+            return <Loading />
+        } else if (hasError) {
+            return <h2>{errorMessage}</h2>
+        } else {
+            return (
+                <main>
+                    <h2>{topic_name ? topic_name : "All your favourite articles in one place!"}</h2>
+                    <FilterBar changeFilter={this.updateFilter} />
+                    <ul className="articles-list">
+                        {articles.map((article) => {
+                            return (
+                                <ArticleCard
+                                    key={article.article_id}
+                                    article={article}
+                                />
+                            );
+                        })}
+                    </ul>
+                </main>
+            );
+        }
+
     }
 }
 

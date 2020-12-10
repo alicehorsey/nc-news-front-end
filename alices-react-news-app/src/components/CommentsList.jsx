@@ -5,11 +5,12 @@ import CommentCard from './CommentCard';
 import AddCommentForm from "./AddCommentForm"
 
 
-
 class CommentsList extends Component {
     state = {
         comments: [],
-        isLoading: true
+        isLoading: true,
+        hasError: false,
+        errorMessage: ""
     }
 
     componentDidMount = () => {
@@ -31,22 +32,15 @@ class CommentsList extends Component {
     removeComment = (comment_id) => {
         deleteComment(comment_id)
         this.setState((currentState) => {
-            const newState = currentState.comments.filter(comment => {
-                if (comment.comment_id !== +comment_id) {
-                    return comment
-                }
-            })
-            console.log(newState, "newState")
+            const newState = currentState.comments.filter(comment => comment.comment_id !== +comment_id)
             return {
                 comments: newState
             }
         })
-
     }
 
     render() {
         const { comments, isLoading } = this.state
-        console.log(comments, "in render")
 
         if (isLoading) return <CommentsLoading />
         return (
@@ -66,14 +60,5 @@ class CommentsList extends Component {
         );
     }
 }
-
-
-//comment example object -
-// author: "happyamy2016"
-// body: "Neque dolor sint illum id consequuntur debitis qui nam eum. Nam adipisci similique consequatur officiis. Totam qui enim at iste dolorem ullam. Tenetur laudantium sed facilis aspernatur occaecati. Provident rerum quia consectetur et. Molestiae eligendi commodi."
-// comment_id: 115
-// created_at: "2018-01-19T14:47:14.514Z"
-// votes: 12
-
 
 export default CommentsList;

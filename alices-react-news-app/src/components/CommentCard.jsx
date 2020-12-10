@@ -11,16 +11,13 @@ class CommentCard extends Component {
 
     handleClick = (event) => {
         const { removeComment } = this.props
-
-        console.log(event.target.id)
         const comment_id = event.target.id
-        console.log(comment_id)
         this.setState({ isDisabled: true })
         removeComment(comment_id)
     }
 
     render() {
-        const { comment, deleteComment } = this.props
+        const { comment } = this.props
         const { author, body, created_at, comment_id, votes } = comment
         return (
             < li className="comment-card" >

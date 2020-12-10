@@ -48,3 +48,13 @@ export const getComments = (article_id) => {
     })
 }
 
+export const postComment = (article_id, commentToPost) => {
+    return alicesNewsAPI.post(`/articles/${article_id}/comments`, commentToPost).then(({ data }) => {
+        return data.postedComment[0]
+        //Need to go to my API code and change this so that it returns an object not an object in an array!!!
+    })
+}
+
+export const deleteComment = (comment_id) => {
+    return alicesNewsAPI.delete(`/comments/${comment_id}`)
+}

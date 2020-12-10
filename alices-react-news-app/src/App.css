@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+    color: black;
+}
 
 h1 {
     text-align: center;
@@ -50,22 +54,24 @@ h3 {
     text-transform: uppercase;
 }
 
-.article-list {
+.articles-list {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .article-card {
     list-style-type: none;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin: 0;
     margin-bottom: 20px;
     padding: 10px;
     border: 5px solid  rgb(199, 199, 245);
     background-color:whitesmoke;
     opacity: 95%;
+    min-width: 100%;
 }
 .filter-articles {
     text-align: center;
@@ -86,6 +92,9 @@ h3 {
     padding: 20px;
     border: 5px solid  rgb(199, 199, 245);
     background-color:whitesmoke;
+}
+.sentence-link{
+    text-decoration: underline;
 }
 .loading-message{
     text-align: center;

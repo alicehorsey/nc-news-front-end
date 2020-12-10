@@ -20,13 +20,11 @@ class AddCommentForm extends Component {
 
     render() {
         const { body } = this.state
-
         return (
             <form onSubmit={this.handleSubmit}>
                 <textarea type="text" onChange={this.handleChange} value={body}></textarea>
                 <button>Post Comment</button>
             </form >
-
         );
     }
 }

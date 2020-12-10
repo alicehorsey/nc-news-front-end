@@ -4,7 +4,7 @@ class FilterBar extends Component {
 
     state = {
         authorButton: "A-Z",
-        dateButton: "Show Oldest First"
+        dateButton: "Show Oldest First",
     }
 
     handleOrderClick = () => {
@@ -27,9 +27,8 @@ class FilterBar extends Component {
         }
     }
 
-
     render() {
-        const { authorButton, dateButton } = this.state
+        const { authorButton, dateButton, commentButton } = this.state
         return (
             <main className="filter-articles">
                 <label>Author:
