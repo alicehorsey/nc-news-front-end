@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import CommentsLoading from './CommentsLoading'
-import { getComments } from "../api"
+import { getComments, postComment, deleteComment } from "../api"
 import CommentCard from './CommentCard';
+import AddCommentForm from "./AddCommentForm"
+
+
 
 class CommentsList extends Component {
-
     state = {
         comments: [],
         isLoading: true
@@ -17,20 +19,49 @@ class CommentsList extends Component {
         })
     }
 
+    addComment = (commentToPost) => {
+        const { article_id } = this.props
+        postComment(article_id, commentToPost).then((newComment) => {
+            this.setState((currentState) => {
+                return { comments: [newComment, ...currentState.comments] }
+            })
+        })
+    }
+
+    removeComment = (comment_id) => {
+        deleteComment(comment_id)
+        this.setState((currentState) => {
+            const newState = currentState.comments.filter(comment => {
+                if (comment.comment_id !== +comment_id) {
+                    return comment
+                }
+            })
+            console.log(newState, "newState")
+            return {
+                comments: newState
+            }
+        })
+
+    }
+
     render() {
         const { comments, isLoading } = this.state
+        console.log(comments, "in render")
 
         if (isLoading) return <CommentsLoading />
         return (
             <main>
+                <p>Add Comment: </p>
+                <AddCommentForm addComment={this.addComment} />
+                <p>Comments:</p>
                 <ul className="comments-list">
                     {comments.map((comment) => {
                         return (
-                            <CommentCard key={comment.comment_id} comment={comment} />
+                            <CommentCard key={comment.comment_id} comment={comment} removeComment={this.removeComment} />
                         )
                     })}
-
                 </ul>
+
             </main>
         );
     }
