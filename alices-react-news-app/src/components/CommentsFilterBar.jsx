@@ -1,24 +1,12 @@
 import React, { Component } from 'react';
 
-class FilterBar extends Component {
+class CommentsFilterBar extends Component {
 
     state = {
-        authorButton: "A-Z",
         dateButton: "Show Oldest First",
-        commentButton: "Low-High",
         votesButton: "Low-High"
     }
 
-    //author
-    handleAuthorClick = () => {
-        if (this.state.authorButton === "A-Z") {
-            this.props.changeFilter("asc", "author")
-            this.setState({ authorButton: "Z-A" })
-        } else {
-            this.props.changeFilter("desc", "author")
-            this.setState({ authorButton: "A-Z" })
-        }
-    }
     //date
     handleDateClick = () => {
         if (this.state.dateButton === "Show Oldest First") {
@@ -27,16 +15,6 @@ class FilterBar extends Component {
         } else {
             this.props.changeFilter("desc", "created_at")
             this.setState({ dateButton: "Show Oldest First" })
-        }
-    }
-    //comment count
-    handleCommentClick = () => {
-        if (this.state.commentButton === "Low-High") {
-            this.props.changeFilter("asc", "comment_count")
-            this.setState({ commentButton: "High-Low" })
-        } else {
-            this.props.changeFilter("desc", "comment_count")
-            this.setState({ commentButton: "Low-High" })
         }
     }
     //votes
@@ -51,17 +29,11 @@ class FilterBar extends Component {
     }
 
     render() {
-        const { authorButton, dateButton, commentButton, votesButton } = this.state
+        const { dateButton, votesButton } = this.state
         return (
             <main className="filter-articles">
                 <label>Date:
                     <button className="asc-desc-button" id="dateOrderButton" onClick={this.handleDateClick}>{dateButton}</button>
-                </label>
-                <label>Author:
-                    <button className="author-button" id="authorOrderButton" onClick={this.handleAuthorClick}>{authorButton}</button>
-                </label>
-                <label>Comment Count:
-                    <button className="comment-button" id="commentOrderButton" onClick={this.handleCommentClick}>{commentButton}</button>
                 </label>
                 <label>Votes Count:
                     <button className="votes-button" id="votesOrderButton" onClick={this.handleVotesClick}>{votesButton}</button>
@@ -72,4 +44,5 @@ class FilterBar extends Component {
     }
 }
 
-export default FilterBar;
+export default CommentsFilterBar
+    ;

@@ -9,7 +9,7 @@ class ArticlesList extends Component {
     state = {
         articles: [],
         order: undefined, //<--- order: asc / desc
-        sort_by: undefined, //<--- column: created_at / author
+        sort_by: undefined, //<--- column: created_at / author / comment_count / votes
         isLoading: true,
         hasError: false,
         errorMessage: ""

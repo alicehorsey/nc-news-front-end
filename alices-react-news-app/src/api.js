@@ -42,8 +42,13 @@ export const updateVoteForComment = (comment_id, vote) => {
     })
 }
 
-export const getComments = (article_id) => {
-    return alicesNewsAPI.get(`/articles/${article_id}/comments`).then(({ data }) => {
+export const getComments = (article_id, order, sort_by) => {
+    return alicesNewsAPI.get(`/articles/${article_id}/comments`, {
+        params: {
+            order: order,
+            sort_by: sort_by
+        }
+    }).then(({ data }) => {
         return data.commentsByArticleId;
     })
 }
