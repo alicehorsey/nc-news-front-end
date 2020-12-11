@@ -46,7 +46,6 @@ class ArticlesList extends Component {
     }
 
     updateFilter = (newOrder, newSort_by) => {
-        console.log(newOrder, newSort_by, "<---articles list")
         this.setState({ order: newOrder, sort_by: newSort_by })
     }
 

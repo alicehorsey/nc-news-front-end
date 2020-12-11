@@ -19,7 +19,6 @@ class SingleArticle extends Component {
     componentDidMount = () => {
         const { article_id } = this.props
         getSingleArticle(article_id).then(article => {
-            // console.log(article, "in single article")
             this.setState({ article, isLoading: false })
         }).catch((err) => {
             const { response: { status, statusText } } = err
@@ -31,7 +30,7 @@ class SingleArticle extends Component {
     render() {
         const { author, body, comment_count, created_at, title, topic, votes } = this.state.article
         const { isLoading, hasError, errorMessage } = this.state
-        const { article_id } = this.props
+        const { article_id, username } = this.props
 
         if (isLoading) {
             return <Loading />
@@ -46,7 +45,7 @@ class SingleArticle extends Component {
                     <p>Published: {formatDate(created_at)}</p>
                     <Vote name="article" id={article_id} vote={votes} />
                     <p>Comments: {comment_count}</p>
-                    <CommentsList article_id={article_id} />
+                    <CommentsList article_id={article_id} username={username} />
                     <p>Like what you see? View more articles like this one at <Link className="sentence-link" to={`/topics/${topic}`}>{topic}!</Link></p>
                 </div >
             );

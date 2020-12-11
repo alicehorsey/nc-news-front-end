@@ -22,7 +22,6 @@ class ArticlePreview extends Component {
     }
 
     render() {
-        console.log(this.props)
         const { isLoading, hasError, errorMessage } = this.state
 
         if (isLoading) {
@@ -33,6 +32,7 @@ class ArticlePreview extends Component {
             return (
                 <div className="card.preview">
                     <p>{this.state.articlePreview}</p>
+                    <p>Click to read more, vote and post a comment...</p>
                 </div>
             );
         }

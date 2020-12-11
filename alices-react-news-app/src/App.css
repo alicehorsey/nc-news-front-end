@@ -46,6 +46,30 @@ h4 {
     font-size: 10pt;
     padding: 5px;
 }
+.login-bar {
+    text-align: right;
+    padding: 1px;
+    background-color:whitesmoke;
+    opacity: 95%;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+}
+.front-page {
+    min-height: 1800px;
+    text-align: center;
+    background-color:whitesmoke;
+    opacity: 30%;
+}
+.login-text {
+    margin: 0;
+    padding-right: 10px;
+}
+.login-button{
+    padding:3px;
+    
+}
 .nav-bar {
     text-align: center;
     background-color: rgb(199, 199, 245);
@@ -76,9 +100,9 @@ h4 {
     border: 5px solid  rgb(199, 199, 245);
     background-color:whitesmoke;
     opacity: 95%;
-    min-width: 100%;
-    
+    min-width: 100%;   
 }
+
 .card-content {
     display: flex;
     flex-direction: row;
@@ -131,4 +155,8 @@ h4 {
     background-color:rgb(227, 227, 247);
     opacity: 100%;
     min-width: 100%;
+}
+.comment-form-box {
+    min-width: 99%;
+    min-height: 100px;
 }

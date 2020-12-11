@@ -36,7 +36,6 @@ class CommentsList extends Component {
     }
 
     updateFilter = (newOrder, newSort_by) => {
-        console.log(newOrder, newSort_by, "<---comments list")
         this.setState({ order: newOrder, sort_by: newSort_by })
     }
 
@@ -61,18 +60,19 @@ class CommentsList extends Component {
 
     render() {
         const { comments, isLoading } = this.state
+        const { username } = this.props
 
         if (isLoading) return <CommentsLoading />
         return (
             <main>
                 <p>Add Comment: </p>
-                <AddCommentForm addComment={this.addComment} />
+                <AddCommentForm addComment={this.addComment} username={username} />
                 <p>Comments:</p>
                 <CommentsFilterBar changeFilter={this.updateFilter} />
                 <ul className="comments-list">
                     {comments.map((comment) => {
                         return (
-                            <CommentCard key={comment.comment_id} comment={comment} removeComment={this.removeComment} />
+                            <CommentCard key={comment.comment_id} comment={comment} removeComment={this.removeComment} username={username} />
                         )
                     })}
                 </ul>

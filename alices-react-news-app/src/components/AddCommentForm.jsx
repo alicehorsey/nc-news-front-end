@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class AddCommentForm extends Component {
     state = {
-        username: "jessjelly",// hardcoded username until login functionality is implemented
+        username: this.props.username,// hardcoded username until login functionality is implemented
         body: ""
     }
 
@@ -22,7 +22,7 @@ class AddCommentForm extends Component {
         const { body } = this.state
         return (
             <form onSubmit={this.handleSubmit}>
-                <textarea type="text" onChange={this.handleChange} value={body}></textarea>
+                <textarea className="comment-form-box" type="text" onChange={this.handleChange} value={body}></textarea>
                 <button>Post Comment</button>
             </form >
         );
