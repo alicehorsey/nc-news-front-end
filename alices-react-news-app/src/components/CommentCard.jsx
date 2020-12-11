@@ -27,8 +27,7 @@ class CommentCard extends Component {
                 <p>{body}</p >
                 <p>Published: {formatDate(created_at)}</p>
                 <Vote name="comment" id={comment_id} vote={votes} />
-                {author === username ? <button id={comment_id} onClick={this.handleClick} disabled={this.state.isDisabled}>Delete</button> : <></>}
-
+                {author === username ? <button className="delete-button" id={comment_id} onClick={this.handleClick} disabled={this.state.isDisabled}>Delete</button> : <></>}
             </li >
         );
     }

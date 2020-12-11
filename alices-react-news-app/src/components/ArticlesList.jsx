@@ -35,7 +35,7 @@ class ArticlesList extends Component {
         if (newTopic || newOrder || newSortBy) {
             // this.setState({ isLoading: true })
             getArticles(topic_name, order, sort_by).then((articles) => {
-                this.setState({ articles, isLoading: false })
+                this.setState({ articles, isLoading: false, hasError: false })
             })
                 .catch((err) => {
                     const { response: { status, statusText } } = err

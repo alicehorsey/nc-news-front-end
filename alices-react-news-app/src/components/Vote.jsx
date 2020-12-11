@@ -7,24 +7,24 @@ class Vote extends Component {
         vote: 0,
     }
 
-    handleVoteClick = (id, event) => {
+    handleVoteClick = (id, value) => {
         const { name } = this.props
         if (name === "comment") {
-            this.setState({ vote: (this.state.vote + +event.target.value) })
-            updateVoteForComment(id, +event.target.value)
+            this.setState({ vote: (this.state.vote + value) })
+            updateVoteForComment(id, value)
         } else if (name === "article") {
-            this.setState({ vote: (this.state.vote + +event.target.value) })
-            updateVoteForArticle(id, +event.target.value)
+            this.setState({ vote: (this.state.vote + value) })
+            updateVoteForArticle(id, value)
         }
     }
 
     render() {
         const { id, vote } = this.props
         return (
-            <div>
+            <div className="vote-button">
                 <p>Votes: {vote + this.state.vote}</p>
-                <button value={1} onClick={(event) => { this.handleVoteClick(id, event) }} disabled={this.state.vote === 1}>Vote</button>
-                <button value={-1} onClick={(event) => { this.handleVoteClick(id, event) }} disabled={this.state.vote === 0}>Undo Vote</button>
+                <button onClick={() => { this.handleVoteClick(id, 1) }} disabled={this.state.vote === 1}>Vote</button>
+                <button onClick={() => { this.handleVoteClick(id, -1) }} disabled={this.state.vote === 0}>Undo Vote</button>
             </div >
         )
     }

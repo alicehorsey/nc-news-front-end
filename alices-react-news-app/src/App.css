@@ -157,6 +157,14 @@ h4 {
     min-width: 100%;
 }
 .comment-form-box {
-    min-width: 99%;
-    min-height: 100px;
+    min-width: 40%;
+    min-height: 80px;
+    display: block;
+}
+.delete-button {
+    display: inline;
+    float: right;
+}
+button {
+padding: 5px;
 }

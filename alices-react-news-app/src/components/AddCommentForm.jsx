@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 class AddCommentForm extends Component {
     state = {
         username: this.props.username,// hardcoded username until login functionality is implemented
-        body: ""
+        body: "",
+        displayError: false
     }
 
     handleChange = (event) => {
@@ -14,17 +15,24 @@ class AddCommentForm extends Component {
         const { body, username } = this.state
         const { addComment } = this.props
         event.preventDefault();
-        addComment({ body, username })
-        this.setState({ body: "" })
+        if (!body.length) {
+            this.setState({ displayError: true })
+        } else {
+            addComment({ body, username })
+            this.setState({ body: "" })
+        }
     }
 
     render() {
-        const { body } = this.state
+        const { body, displayError } = this.state
         return (
-            <form onSubmit={this.handleSubmit}>
-                <textarea className="comment-form-box" type="text" onChange={this.handleChange} value={body}></textarea>
-                <button>Post Comment</button>
-            </form >
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <textarea className="comment-form-box" type="text" onChange={this.handleChange} value={body}></textarea>
+                    <button>Post Comment</button>
+                </form >
+                <p hidden={!displayError}>Unable to submit empty comment</p>
+            </div>
         );
     }
 }
