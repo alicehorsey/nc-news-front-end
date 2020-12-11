@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from '@reach/router'
 import { formatDate } from "../utils/utils"
+import ArticlePreview from "./ArticlePreview"
 
 const ArticleCard = ({ article }) => {
 
@@ -12,7 +13,7 @@ const ArticleCard = ({ article }) => {
                 <p>Created: {formatDate(article.created_at)}</p>
                 <p>Comments: {article.comment_count}</p>
                 <p>Votes: {article.votes}</p>
-
+                <ArticlePreview article_id={article.article_id} />
             </li >
         </Link>
     );
