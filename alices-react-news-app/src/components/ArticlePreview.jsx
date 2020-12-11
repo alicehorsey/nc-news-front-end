@@ -13,7 +13,7 @@ class ArticlePreview extends Component {
     componentDidMount = () => {
         const { article_id } = this.props
         getSingleArticle(article_id).then(article => {
-            const preview = article.body.split(" ").slice(0, 51).join(" ") + "..."
+            const preview = article.body.split(" ").slice(0, 71).join(" ") + "..."
             this.setState({ articlePreview: preview, isLoading: false })
         }).catch((err) => {
             this.setState({ isLoading: false, hasError: true, errorMessage: `Oh no! Article preview unavailable.` }
@@ -31,7 +31,7 @@ class ArticlePreview extends Component {
             return <h2>{errorMessage}</h2>
         } else {
             return (
-                <div className="article-preview">
+                <div className="card.preview">
                     <p>{this.state.articlePreview}</p>
                 </div>
             );

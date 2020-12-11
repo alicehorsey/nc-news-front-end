@@ -10,10 +10,14 @@ const ArticleCard = ({ article }) => {
             < li >
                 <h3>{article.title}</h3 >
                 <h4>{article.author}</h4 >
-                <p>Created: {formatDate(article.created_at)}</p>
-                <p>Comments: {article.comment_count}</p>
-                <p>Votes: {article.votes}</p>
-                <ArticlePreview article_id={article.article_id} />
+                <div className="card-content">
+                    <div className="card-details">
+                        <p>Created: {formatDate(article.created_at)}</p>
+                        <p>Comments: {article.comment_count}</p>
+                        <p>Votes: {article.votes}</p>
+                    </div>
+                    <ArticlePreview article_id={article.article_id} />
+                </div>
             </li >
         </Link>
     );

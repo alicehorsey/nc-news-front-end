@@ -32,6 +32,11 @@ h3 {
     text-transform: uppercase;
     margin: 0px;
 }
+h4 {
+    text-transform: capitalize;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
 .App {
     background-image: url(./images/waldemar-brandt-JYPDh4ter10-unsplash.jpg);
     background-size: contain;
@@ -72,7 +77,16 @@ h3 {
     background-color:whitesmoke;
     opacity: 95%;
     min-width: 100%;
+    
 }
+.card-content {
+    display: flex;
+    flex-direction: row;
+}
+.card-details {
+    flex: 0 0 180px;
+}
+
 .filter-articles {
     text-align: center;
     background-color:  rgb(199, 199, 245);
