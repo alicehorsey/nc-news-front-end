@@ -1,5 +1,6 @@
 {
   "name": "alices-react-news-app",
+  "homepage": "https://6011f3568ba681112145fe83--alices-news-application.netlify.app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
