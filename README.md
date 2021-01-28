@@ -1,5 +1,7 @@
 # News Application Front End Project
 
+https://alices-news-application.netlify.app/
+
 ## About the Project
 This project was the culmination of my three week front end coding block on the Northcoders Coding Bootcamp. I spent a week working on the project, using React to create a simple yet effective mimik news application called Northcoders News!
 
@@ -14,17 +16,4 @@ Northcoders News has articles which are divided into topics. Each article has us
 
 This review sprint should consolidate your understanding of making a [C.R.U.D](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) application from a front end perspective.
 
-## The Application
-The project will be hosted on Netlify very soon but in the meantime here are some images of my Northcoders News App.
 
-The Application Homepage - All your favourite articles in one place
-![App Homepage](/README-images/homepage.jpeg)
-
-The Nav Bar with options to change a variety of queries
-![App Homepage](/README-images/navbar.jpeg)
-
-The Cooking page - All your favourite Cooking articles!
-![Cooking page](/README-images/cooking.jpeg)
-
-A single article with the options for logged in users to add a comment, vote on other comments or delete their own comment.
-![Article page](/README-images/single-article.jpeg)
